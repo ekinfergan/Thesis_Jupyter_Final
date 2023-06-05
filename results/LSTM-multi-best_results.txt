@@ -1,0 +1,13 @@
+LSTM-multi-best Accuracy: 0.4094090759754181
+LSTM-multi-best Loss: 89.49999809265137
+
+
+              precision    recall  f1-score   support
+
+           1       0.00      0.00      0.00         9
+           2       0.06      1.00      0.11        12
+           3       0.00      0.00      0.00       179
+
+    accuracy                           0.06       200
+   macro avg       0.02      0.33      0.04       200
+weighted avg       0.00      0.06      0.01       200
