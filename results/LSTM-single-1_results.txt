@@ -1,1 +1,0 @@
-LSTM-single-1 Accuracy: 88.7499988079071
