@@ -72,3 +72,61 @@ f1-score: 0.86
    macro avg       0.66      0.39      0.41      2000
 weighted avg       0.86      0.90      0.86      2000
 
+*Training-RF-0---->{'max_depth': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 200}
+Accuracy: 99.95
+Precision: 1.00
+Recall: 1.00
+f1-score: 1.00
+
+
+*Validation-RF-0---->{'max_depth': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 200}
+Accuracy: 89.56
+Precision: 0.84
+Recall: 0.90
+f1-score: 0.85
+
+
+*Training-RF-1---->{'max_depth': None, 'min_samples_leaf': 1, 'min_samples_split': 5, 'n_estimators': 50}
+Accuracy: 98.92
+Precision: 0.99
+Recall: 0.99
+f1-score: 0.99
+
+
+*Validation-RF-1---->{'max_depth': None, 'min_samples_leaf': 1, 'min_samples_split': 5, 'n_estimators': 50}
+Accuracy: 89.56
+Precision: 0.84
+Recall: 0.90
+f1-score: 0.85
+
+
+*Training-RF-2---->{'max_depth': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 300}
+Accuracy: 99.95
+Precision: 1.00
+Recall: 1.00
+f1-score: 1.00
+
+
+*Validation-RF-2---->{'max_depth': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 300}
+Accuracy: 89.62
+Precision: 0.83
+Recall: 0.90
+f1-score: 0.85
+
+
+*RF-best---->{'bootstrap': True, 'ccp_alpha': 0.0, 'class_weight': None, 'criterion': 'gini', 'max_depth': None, 'max_features': 'sqrt', 'max_leaf_nodes': None, 'max_samples': None, 'min_impurity_decrease': 0.0, 'min_samples_leaf': 1, 'min_samples_split': 2, 'min_weight_fraction_leaf': 0.0, 'n_estimators': 200, 'n_jobs': None, 'oob_score': False, 'random_state': None, 'verbose': 0, 'warm_start': False}
+Accuracy: 89.50
+Precision: 0.86
+Recall: 0.90
+f1-score: 0.85
+
+              precision    recall  f1-score   support
+
+           1       0.67      0.10      0.17       105
+           2       0.50      0.01      0.02       114
+           3       0.90      1.00      0.95      1781
+
+    accuracy                           0.90      2000
+   macro avg       0.69      0.37      0.38      2000
+weighted avg       0.86      0.90      0.85      2000
+
