@@ -5,3 +5,4 @@ src/processed/val_tfidf.csv
 src/processed/test_tfidf.csv
 .ipynb_checkpoints
 venv
+src/processed/train_encoded_x.npy
