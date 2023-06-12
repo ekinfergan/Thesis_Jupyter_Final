@@ -1,5 +1,7 @@
-processed/glove-wiki-gigaword-100-word2vec.txt
-processed/glove-twitter-100-word2vec.txt
-processed/train_tfidf.csv
-processed/val_tfidf.csv
-processed/test_tfidf.csv
+src/processed/glove-wiki-gigaword-100-word2vec.txt
+src/processed/glove-twitter-100-word2vec.txt
+src/processed/train_tfidf.csv
+src/processed/val_tfidf.csv
+src/processed/test_tfidf.csv
+.ipynb_checkpoints
+venv
