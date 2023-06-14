@@ -93,8 +93,8 @@ def main():
     print(f"*Best model: {nb_best_model}")
     y_pred = rf_best_model.predict(x_test_tfidf)
     print(np.bincount(y_pred))
-    results_dir = "./results/NB_results/NB_best"
-    model_type = "NB-best"
+    results_dir = "./results/RF_results/RF_best"
+    model_type = "RF-best"
     eu.evaluate_model(y_pred, model_type, x_test_tfidf, y_test, rf_best_params, senti_labels, results_dir, only_metrics=False)
     eu.calculate_OvR_roc_auc_score(rf_best_model, model_type, x_train_tfidf, y_train, x_test_tfidf, y_test, senti_labels)
     #eu.plot_feature_imp(model, results_dir=results_dir)
@@ -105,7 +105,7 @@ def main():
         SUPPORT VECTOR MACHINES
     '''
     print("SVM")
-    svm = tm.SVC(x_train_tfidf, y_train, x_val_tfidf, y_val, x_test_tfidf, y_test) 
+    svm = tm.SVM(x_train_tfidf, y_train, x_val_tfidf, y_val, x_test_tfidf, y_test) 
     svm.perform_grid_search() # Save top 3 models
 
     # Fit the top 3 models, find the model among top 3 with the highest validation accuracy, and store it

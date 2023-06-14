@@ -17,6 +17,7 @@ class BaseModel:
         self.x_test = x_test
         self.y_test = y_test
         self.best_model = None
+        self.params = None
         self.top3_params = None
         self.best_accuracy = 0
     
@@ -82,7 +83,7 @@ class BaseModel:
 
 
 class RandomForest(BaseModel):
-    def __init__(self,  x_train, y_train, x_val, y_val, x_test, y_test):
+    def __init__(self, x_train, y_train, x_val, y_val, x_test, y_test):
         model = RandomForestClassifier()
         # Define the parameter grid for grid search
         rf_param_grid = {
@@ -95,18 +96,18 @@ class RandomForest(BaseModel):
 
 
 class NaiveBayes(BaseModel):
-    def __init__(self,  x_train, y_train, x_val, y_val, x_test, y_test):
+    def __init__(self, x_train, y_train, x_val, y_val, x_test, y_test):
         model = MultinomialNB()
         # Define the parameter grid for grid search
         nb_param_grid = {
-            'alpha': [0.1, 0.5, 1.0],  # Smoothing parameter for MultinomialNB
+            'alpha': [0.001, 0.01, 0.1, 0.5, 1.0, 2.0, 5.0, 10.0],  # Smoothing parameter for MultinomialNB
             'fit_prior': [True, False]
         }
         super().__init__(model, "NB", nb_param_grid, x_train, y_train, x_val, y_val, x_test, y_test)
 
 
 class SVM(BaseModel):
-    def __init__(self,  x_train, y_train, x_val, y_val, x_test, y_test):
+    def __init__(self, x_train, y_train, x_val, y_val, x_test, y_test):
         model = SVC()
         # Define the parameter grid for grid search
         svm_param_grid = {

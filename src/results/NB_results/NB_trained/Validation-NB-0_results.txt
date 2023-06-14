@@ -1,8 +1,8 @@
 *Validation-NB-0
-Params: {'alpha': 0.1, 'fit_prior': False}
+Params: {'alpha': 0.001, 'fit_prior': False}
 
-Accuracy: 0.80%
+Accuracy: 0.81%
 Precision: 0.90
-Recall: 0.80
+Recall: 0.81
 f1-score: 0.84
 

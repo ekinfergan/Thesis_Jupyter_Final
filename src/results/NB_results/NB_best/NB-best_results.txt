@@ -1,21 +1,21 @@
 *NB-best
-Params: {'alpha': 0.1, 'fit_prior': False}
+Params: {'max_depth': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 300}
 
-Accuracy: 0.80%
-Precision: 0.90
-Recall: 0.80
-f1-score: 0.84
+Accuracy: 0.73%
+Precision: 0.88
+Recall: 0.73
+f1-score: 0.79
 
 Classification Report:
               precision    recall  f1-score   support
 
-           1       0.27      0.63      0.38       930
-           2       0.16      0.35      0.22       991
-           3       0.97      0.83      0.90     17688
+           1       0.30      0.58      0.40       930
+           2       0.08      0.28      0.12       991
+           3       0.95      0.76      0.85     17688
 
-    accuracy                           0.80     19609
-   macro avg       0.46      0.61      0.50     19609
-weighted avg       0.90      0.80      0.84     19609
+    accuracy                           0.73     19609
+   macro avg       0.44      0.54      0.46     19609
+weighted avg       0.88      0.73      0.79     19609
 
-AUC score: [0.8816325273566371, 0.7813445404385522, 0.8704185640346843]
-Averaged AUC score: 0.84
+AUC score: [0.8865128282177617, 0.6758539824366229, 0.7912778342446114]
+Averaged AUC score: 0.78
