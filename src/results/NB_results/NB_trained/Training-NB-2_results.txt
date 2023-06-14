@@ -1,0 +1,8 @@
+*Training-NB-2
+Params: {'alpha': 1.0, 'fit_prior': False}
+
+Accuracy: 0.71%
+Precision: 0.71
+Recall: 0.71
+f1-score: 0.71
+
