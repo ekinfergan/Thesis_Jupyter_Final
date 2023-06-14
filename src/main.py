@@ -3,10 +3,11 @@ import numpy as np
 import pandas as pd
 from scipy.sparse import load_npz
 
-import models.classical_ml as tm
+import pls.Thesis_Jupyter_Final.src.models.classical_ml as tm
 import models.evaluation_utils as eu
 
-senti_labels = ["Negative", "Neutral", "Positive"]
+senti_labels_both = {1: 'Negative', 2: 'Neutral', 3: 'Positive'}
+senti_labels = list(senti_labels_both.values())
 
 def load_encoded_data():
     pass
@@ -67,6 +68,36 @@ def main():
     eu.calculate_OvR_roc_auc_score(nb_best_model, model_type, x_train_tfidf, y_train, x_test_tfidf, y_test, senti_labels)
     print()
 
+    '''
+        SUPPORT VECTOR MACHINES
+    '''
+    print("SVM")
+    svm = tm.SVM(x_train_tfidf, y_train, x_val_tfidf, y_val, x_test_tfidf, y_test) 
+    svm.perform_grid_search() # Save top 3 models
+
+    # Fit the top 3 models, find the model among top 3 with the highest validation accuracy, and store it
+    trained_models = svm.train_and_evaluate_models()
+    # Evaluate and print metrics for each model in fitted models for more in-depth analysis
+    results_dir = "./results/SVM_results/SVM_trained"
+    for i, (model, params) in enumerate(trained_models):
+        y_pred = model.predict(x_train_tfidf)
+        print(i)
+        print("-Training: ")
+        eu.evaluate_model(y_pred, f"Training-SVM-{i}", x_train_tfidf, y_train, params, senti_labels, results_dir, only_metrics=True)
+        y_pred = model.predict(x_val_tfidf)
+        print("-Validation:")
+        eu.evaluate_model(y_pred, f"Validation-SVM-{i}", x_val_tfidf, y_val, params, senti_labels, results_dir, only_metrics=True)
+
+    # Use the best model to evaluate on the test set
+    svm_best_model, svm_best_params = svm.evaluate_best_model()
+    print(f"*Best model: {svm_best_model}")
+    y_pred = svm_best_model.predict(x_test_tfidf)
+    print(np.bincount(y_pred))
+    results_dir = "./results/SVM_results/SVM_best"
+    model_type = "SVM-best"
+    eu.evaluate_model(y_pred, model_type, x_test_tfidf, y_test, svm_best_params, senti_labels, results_dir, only_metrics=False)
+    eu.calculate_OvR_roc_auc_score(svm_best_model, model_type, x_train_tfidf, y_train, x_test_tfidf, y_test, senti_labels)
+    print()
 
     '''
         RANDOM FOREST
@@ -98,38 +129,6 @@ def main():
     eu.evaluate_model(y_pred, model_type, x_test_tfidf, y_test, rf_best_params, senti_labels, results_dir, only_metrics=False)
     eu.calculate_OvR_roc_auc_score(rf_best_model, model_type, x_train_tfidf, y_train, x_test_tfidf, y_test, senti_labels)
     #eu.plot_feature_imp(model, results_dir=results_dir)
-    print()
-
-
-    '''
-        SUPPORT VECTOR MACHINES
-    '''
-    print("SVM")
-    svm = tm.SVM(x_train_tfidf, y_train, x_val_tfidf, y_val, x_test_tfidf, y_test) 
-    svm.perform_grid_search() # Save top 3 models
-
-    # Fit the top 3 models, find the model among top 3 with the highest validation accuracy, and store it
-    trained_models = svm.train_and_evaluate_models()
-    # Evaluate and print metrics for each model in fitted models for more in-depth analysis
-    results_dir = "./results/SVM_results/SVM_trained"
-    for i, (model, params) in enumerate(trained_models):
-        y_pred = model.predict(x_train_tfidf)
-        print(i)
-        print("-Training: ")
-        eu.evaluate_model(y_pred, f"Training-SVM-{i}", x_train_tfidf, y_train, params, senti_labels, results_dir, only_metrics=True)
-        y_pred = model.predict(x_val_tfidf)
-        print("-Validation:")
-        eu.evaluate_model(y_pred, f"Validation-SVM-{i}", x_val_tfidf, y_val, params, senti_labels, results_dir, only_metrics=True)
-
-    # Use the best model to evaluate on the test set
-    svm_best_model, svm_best_params = svm.evaluate_best_model()
-    print(f"*Best model: {svm_best_model}")
-    y_pred = svm_best_model.predict(x_test_tfidf)
-    print(np.bincount(y_pred))
-    results_dir = "./results/SVM_results/SVM_best"
-    model_type = "SVM-best"
-    eu.evaluate_model(y_pred, model_type, x_test_tfidf, y_test, svm_best_params, senti_labels, results_dir, only_metrics=False)
-    eu.calculate_OvR_roc_auc_score(svm_best_model, model_type, x_train_tfidf, y_train, x_test_tfidf, y_test, senti_labels)
     print()
 
 

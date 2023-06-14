@@ -3,6 +3,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.svm import SVC
 from sklearn.model_selection import GridSearchCV
+from functools import cache
 
 
 class BaseModel:
@@ -21,6 +22,7 @@ class BaseModel:
         self.top3_params = None
         self.best_accuracy = 0
     
+    @cache
     def perform_grid_search(self):
         print("*Performing grid search...")
         # Perform grid search
@@ -58,8 +60,6 @@ class BaseModel:
                 print(f"Unknown model type: {self.model_type}")
                 return
             model.fit(self.x_train, self.y_train)
-            #evaluate_model(model, f"Training-{model_type}-{i}", self.x_train, self.y_train, top3_params[i], only_metrics=True)
-            #evaluate_model(model, f"Validation-{model_type}-{i}", self.x_val, self.y_val, top3_params[i], only_metrics=True)
             # Get accuracy for the validation set (.score calls .predict() internally)
             val_accuracy = model.score(self.x_val, self.y_val)
             if val_accuracy > self.best_accuracy:

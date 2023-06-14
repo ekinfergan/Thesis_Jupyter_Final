@@ -5,4 +5,4 @@ src/input/processed/val_tfidf.csv
 src/input/processed/test_tfidf.csv
 .ipynb_checkpoints
 src/input/processed/train_encoded_x.npy
-src/models/_pycache_
+src/models/__pycache__
