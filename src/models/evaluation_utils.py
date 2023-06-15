@@ -7,6 +7,7 @@ from sklearn.multiclass import OneVsRestClassifier
 from sklearn.metrics import RocCurveDisplay
 import matplotlib.pyplot as plt
 from itertools import cycle
+from joblib import load
 
 NUM_of_CLASSES = 3
 
@@ -80,7 +81,26 @@ def calculate_OvR_roc_auc_score(model, model_name, x, y, x_test, y_test, labels,
     plot_roc_curve(prob_test_vec, y_test, labels, res_path=res_path)
 
 
-def evaluate_model(y_pred, model_name, x, y, params, labels, res_path, only_metrics):
+# TODO:
+def plot_feature_imp(model, res_path):
+    processed_folder_path = "./pls/Thesis_Jupyter_Final/src/input/processed"
+    vect_file_path = os.path.join(processed_folder_path, 'tfidf_vectorizer.joblib')
+    loaded_tfidf_vectorizer = load(vect_file_path)
+    importances = model.feature_importances_
+    feature_names = loaded_tfidf_vectorizer.get_feature_names_out()
+    feature_importances = pd.Series(importances, index=feature_names)
+
+    fig, ax = plt.subplots()
+    feature_importances.nlargest(20).plot.bar(ax=ax)
+    ax.set_title("Top 20 Most Predictive Features")
+    ax.set_xlabel('Feature')
+    ax.set_ylabel('Importance')
+    fig.tight_layout()
+    plt.savefig(os.path.join(res_path, "feature_importance.png"))
+    plt.close()
+
+
+def evaluate_model(y_pred, model_name, x, y, params, labels, res_path, only_metrics, model=None):
     if not os.path.exists(res_path):
         os.makedirs(res_path)
 
@@ -102,17 +122,5 @@ def evaluate_model(y_pred, model_name, x, y, params, labels, res_path, only_metr
 
             plot_confusion_matrix(y, y_pred, labels=labels, res_path=res_path)
 
-# TODO:
-def plot_feature_imp(model, res_path):
-    importances = model.feature_importances_
-    feature_names = tfidf_vectorizer.get_feature_names_out()
-    feature_importances = pd.Series(importances, index=feature_names)
-
-    fig, ax = plt.subplots()
-    feature_importances.nlargest(20).plot.bar(ax=ax)
-    ax.set_title("Top 20 Most Predictive Features")
-    ax.set_xlabel('Feature')
-    ax.set_ylabel('Importance')
-    fig.tight_layout()
-    plt.savefig(os.path.join(res_path, "feature_importance.png"))
-    plt.close()
+            if model_name == 'RF':
+                plot_feature_imp(model, res_path)

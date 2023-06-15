@@ -1,0 +1,8 @@
+*Training-SVM-1
+Params: {'C': 10, 'gamma': 1, 'kernel': 'rbf'}
+
+Accuracy: 9979.14%
+Precision: 1.00
+Recall: 1.00
+f1-score: 1.00
+

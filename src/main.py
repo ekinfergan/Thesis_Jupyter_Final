@@ -125,10 +125,10 @@ def main():
         y_pred = model.predict(x_train_tfidf)
         print(i)
         print("-Training: ")
-        eu.evaluate_model(y_pred, f"Training-RF-{i}", x_train_tfidf, y_train, params, senti_labels, res_path, only_metrics=True)
+        eu.evaluate_model(y_pred, f"Training-RF-{i}", x_train_tfidf, y_train, params, senti_labels, res_path, only_metrics=True, model=model)
         y_pred = model.predict(x_val_tfidf)
         print("-Validation:")
-        eu.evaluate_model(y_pred, f"Validation-RF-{i}", x_val_tfidf, y_val, params, senti_labels, res_path, only_metrics=True)
+        eu.evaluate_model(y_pred, f"Validation-RF-{i}", x_val_tfidf, y_val, params, senti_labels, res_path, only_metrics=True, model=model)
 
     # Use the best model to evaluate on the test set
     rf_best_model, rf_best_params = rf.evaluate_best_model()
@@ -138,7 +138,7 @@ def main():
     subfolder_path =  "RF_results/RF_best"
     res_path = os.path.join(results_folder_path, subfolder_path)
     model_type = "RF-best"
-    eu.evaluate_model(y_pred, model_type, x_test_tfidf, y_test, rf_best_params, senti_labels, res_path, only_metrics=False)
+    eu.evaluate_model(y_pred, model_type, x_test_tfidf, y_test, rf_best_params, senti_labels, res_path, only_metrics=False, model=rf_best_model)
     eu.calculate_OvR_roc_auc_score(rf_best_model, model_type, x_train_tfidf, y_train, x_test_tfidf, y_test, senti_labels, res_path)
     #eu.plot_feature_imp(model, res_path)
     print()
