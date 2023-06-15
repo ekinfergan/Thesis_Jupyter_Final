@@ -9,31 +9,13 @@ import matplotlib.pyplot as plt
 from itertools import cycle
 
 NUM_of_CLASSES = 3
-results_dir = None
 
-def evaluate_model(y_pred, model_name, x, y, params, labels, res_path, only_metrics):
-    global results_dir  # Access global variable
-    results_dir = res_path
-    os.makedirs(results_dir, exist_ok=True)
+def one_hot_encode(y):
+    y_encoded = np.zeros((len(y), NUM_of_CLASSES))
+    for i, label in enumerate(y):
+        y_encoded[i, label - 1] = 1
 
-    with open(os.path.join(results_dir, f"{model_name}_results.txt"), "w") as f:
-        f.write(f"*{model_name}\n")
-        f.write(f"Params: {params}\n\n")
-
-        accuracy, precision, recall, f1 = calculate_metrics(y, y_pred)
-        f.write(f"Accuracy: {accuracy:.2f}%\n")
-        f.write(f"Precision: {precision:.2f}\n")
-        f.write(f"Recall: {recall:.2f}\n")
-        f.write(f"f1-score: {f1:.2f}\n\n")
-
-        if not only_metrics:
-            report = calculate_classification_report(y, y_pred)
-            f.write("Classification Report:\n")
-            f.write(report)
-            f.write("\n")
-
-            plot_confusion_matrix(y, y_pred, labels=labels, results_dir=results_dir)
-            
+    return y_encoded
 
 def calculate_metrics(y, y_pred):
     accuracy = accuracy_score(y, y_pred)
@@ -48,15 +30,30 @@ def calculate_metrics(y, y_pred):
 def calculate_classification_report(y, y_pred):
     return classification_report(y, y_pred)
 
-def plot_confusion_matrix(y_true, y_pred, labels, results_dir):
+def plot_confusion_matrix(y_true, y_pred, labels, res_path):
     cnf_mat = confusion_matrix(y_true, y_pred)
     mat_disp = ConfusionMatrixDisplay(confusion_matrix=cnf_mat, display_labels=labels)
     mat_disp = mat_disp.plot(cmap='Blues', xticks_rotation='vertical')
     plt.title(f'Confusion Matrix')
-    plt.savefig(os.path.join(results_dir, "confusion_matrix.png"))
+    plt.savefig(os.path.join(res_path, "confusion_matrix.png"))
     plt.close()
 
-def calculate_OvR_roc_auc_score(model, model_name, x, y, x_test, y_test, labels): #average??
+def plot_roc_curve(prob_test_vec, y_test, labels, res_path):
+    fig, ax = plt.subplots(figsize=(10, 10))
+    labels = labels
+    colors = cycle(['limegreen', 'dodgerblue', 'red'])
+    for senti, color in zip(range(NUM_of_CLASSES), colors):
+        RocCurveDisplay.from_predictions(
+            y_test[:, senti],
+            prob_test_vec[:, senti],
+            name=f"ROC curve for {labels[senti]}",
+            color=color,
+            ax=ax,
+        )
+    plt.savefig(os.path.join(res_path, "roc_curve.png"))
+    plt.close()
+        
+def calculate_OvR_roc_auc_score(model, model_name, x, y, x_test, y_test, labels, res_path): #average??
     y = one_hot_encode(y)
     y_test = one_hot_encode(y_test)
 
@@ -76,36 +73,37 @@ def calculate_OvR_roc_auc_score(model, model_name, x, y, x_test, y_test, labels)
 
     averaged_auc_score = (sum(auc_score) / NUM_of_CLASSES)
     # Save AUC to results.txt
-    with open(os.path.join(results_dir, f"{model_name}_results.txt"), "a") as f:
+    with open(os.path.join(res_path, f"{model_name}_results.txt"), "a") as f:
         f.write(f"AUC score: {auc_score}\n")
         f.write(f"Averaged AUC score: {averaged_auc_score:.2f}\n")
 
-    plot_roc_curve(prob_test_vec, y_test, labels)
+    plot_roc_curve(prob_test_vec, y_test, labels, res_path=res_path)
 
-def plot_roc_curve(prob_test_vec, y_test, labels):
-    fig, ax = plt.subplots(figsize=(10, 10))
-    labels = labels
-    colors = cycle(['limegreen', 'dodgerblue', 'red'])
-    for senti, color in zip(range(NUM_of_CLASSES), colors):
-        RocCurveDisplay.from_predictions(
-            y_test[:, senti],
-            prob_test_vec[:, senti],
-            name=f"ROC curve for {labels[senti]}",
-            color=color,
-            ax=ax,
-        )
-    plt.savefig(os.path.join(results_dir, "roc_curve.png"))
-    plt.close()
-        
-def one_hot_encode(y):
-    y_encoded = np.zeros((len(y), NUM_of_CLASSES))
-    for i, label in enumerate(y):
-        y_encoded[i, label - 1] = 1
 
-    return y_encoded
+def evaluate_model(y_pred, model_name, x, y, params, labels, res_path, only_metrics):
+    if not os.path.exists(res_path):
+        os.makedirs(res_path)
+
+    with open(os.path.join(res_path, f"{model_name}_results.txt"), "w") as f:
+        f.write(f"*{model_name}\n")
+        f.write(f"Params: {params}\n\n")
+
+        accuracy, precision, recall, f1 = calculate_metrics(y, y_pred)
+        f.write(f"Accuracy: {accuracy:.2f}%\n")
+        f.write(f"Precision: {precision:.2f}\n")
+        f.write(f"Recall: {recall:.2f}\n")
+        f.write(f"f1-score: {f1:.2f}\n\n")
+
+        if not only_metrics:
+            report = calculate_classification_report(y, y_pred)
+            f.write("Classification Report:\n")
+            f.write(report)
+            f.write("\n")
+
+            plot_confusion_matrix(y, y_pred, labels=labels, res_path=res_path)
 
 # TODO:
-def plot_feature_imp(model, results_dir):
+def plot_feature_imp(model, res_path):
     importances = model.feature_importances_
     feature_names = tfidf_vectorizer.get_feature_names_out()
     feature_importances = pd.Series(importances, index=feature_names)
@@ -116,5 +114,5 @@ def plot_feature_imp(model, results_dir):
     ax.set_xlabel('Feature')
     ax.set_ylabel('Importance')
     fig.tight_layout()
-    plt.savefig(os.path.join(results_dir, "feature_importance.png"))
+    plt.savefig(os.path.join(res_path, "feature_importance.png"))
     plt.close()

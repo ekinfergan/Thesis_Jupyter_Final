@@ -26,7 +26,7 @@ class BaseModel:
     def perform_grid_search(self):
         print("*Performing grid search...")
         # Perform grid search
-        grid_search = GridSearchCV(estimator=self.model, param_grid=self.param_grid, cv=5)
+        grid_search = GridSearchCV(estimator=self.model, param_grid=self.param_grid, cv=3, n_jobs=-1)
         grid_search.fit(self.x_train, self.y_train)
 
         # Get the mean test scores and standard deviations of test scores for all parameter combinations
