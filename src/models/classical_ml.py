@@ -87,10 +87,10 @@ class RandomForest(BaseModel):
         model = RandomForestClassifier()
         # Define the parameter grid for grid search
         rf_param_grid = {
-            'n_estimators': [20, 50, 100, 200, 300],
-            'max_depth': [None, 5, 10],
-            'min_samples_split': [2, 5, 10, 30, 50],
-            'min_samples_leaf': [1, 5, 20, 50],  # Minimum number of samples required to be at a leaf node
+        'n_estimators': [50, 100, 200],
+        'max_depth': [None, 3, 5, 7, 10],  # Limit maximum depth of the trees
+        'min_samples_split': [2, 5, 10, 20],  # Higher values will prevent a model from learning relations which might be highly specific to the particular sample selected for a tree.
+        'min_samples_leaf': [1, 2, 5, 10, 15],  # Higher values prevent a model from getting too complex
         }
         super().__init__(model, "RF", rf_param_grid, x_train, y_train, x_val, y_val, x_test, y_test)
 
@@ -100,7 +100,7 @@ class NaiveBayes(BaseModel):
         model = MultinomialNB()
         # Define the parameter grid for grid search
         nb_param_grid = {
-            'alpha': [0.001, 0.01, 0.1, 0.5, 1.0, 2.0, 5.0, 10.0],  # Smoothing parameter for MultinomialNB
+            'alpha': [0.001, 0.01, 0.1],  # Smoothing parameter for MultinomialNB
             'fit_prior': [True, False]
         }
         super().__init__(model, "NB", nb_param_grid, x_train, y_train, x_val, y_val, x_test, y_test)
@@ -112,7 +112,7 @@ class SVM(BaseModel):
         # Define the parameter grid for grid search
         svm_param_grid = {
             'C': [0.1, 1, 10],
-            'kernel': ['linear', 'rbf', 'poly'],
+            'kernel': ['linear', 'rbf'],
             'gamma': [0.1, 1, 'scale']
         }
         super().__init__(model, "SVM", svm_param_grid, x_train, y_train, x_val, y_val, x_test, y_test)
