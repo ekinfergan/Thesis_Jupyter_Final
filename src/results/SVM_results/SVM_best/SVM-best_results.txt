@@ -1,7 +1,7 @@
 *SVM-best
 Params: {'C': 1, 'gamma': 'scale', 'kernel': 'rbf'}
 
-Accuracy: 8626.89%
+Accuracy: 0.86%
 Precision: 0.89
 Recall: 0.86
 f1-score: 0.87

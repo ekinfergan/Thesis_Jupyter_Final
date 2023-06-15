@@ -1,7 +1,7 @@
 *Validation-SVM-2
 Params: {'C': 1, 'gamma': 'scale', 'kernel': 'rbf'}
 
-Accuracy: 8676.55%
+Accuracy: 0.87%
 Precision: 0.89
 Recall: 0.87
 f1-score: 0.88
