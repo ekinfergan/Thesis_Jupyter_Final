@@ -1,5 +1,5 @@
 *Training-SVM-2
-Params: {'C': 1, 'gamma': 'scale', 'kernel': 'rbf'}
+Params: {'C': 1, 'gamma': 1, 'kernel': 'rbf'}
 
 Accuracy: 0.99%
 Precision: 0.99
