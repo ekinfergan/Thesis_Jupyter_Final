@@ -1,0 +1,9 @@
+src/input/processed/normal/glove-wiki-gigaword-100.txt
+src/input/processed/normal/glove-twitter-100.txt
+src/input/processed/train_tfidf.csv
+src/input/processed/val_tfidf.csv
+src/input/processed/test_tfidf.csv
+src/input/processed/normal/x_train_scores_padded.npy
+src/input/processed/normal/x_train_scores_padded.txt
+.ipynb_checkpoints
+src/models/__pycache__
