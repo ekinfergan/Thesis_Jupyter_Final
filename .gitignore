@@ -1,7 +1,0 @@
-src/input/processed/glove-wiki-gigaword-100-word2vec.txt
-src/input/processed/glove-twitter-100-word2vec.txt
-src/input/processed/train_tfidf.csv
-src/input/processed/val_tfidf.csv
-src/input/processed/test_tfidf.csv
-.ipynb_checkpoints
-src/models/__pycache__
