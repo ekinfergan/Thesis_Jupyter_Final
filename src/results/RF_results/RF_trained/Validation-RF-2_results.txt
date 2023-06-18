@@ -1,8 +1,8 @@
 *Validation-RF-2
 Params: {'max_depth': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 100}
 
-Accuracy: 0.78%
-Precision: 0.87
-Recall: 0.78
-f1-score: 0.82
+Accuracy: 0.75%
+Precision: 0.83
+Recall: 0.75
+f1-score: 0.78
 
