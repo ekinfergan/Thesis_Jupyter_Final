@@ -3,8 +3,8 @@ import numpy as np
 import pandas as pd
 from scipy.sparse import load_npz
 
-import models.classical_ml as tm
-import models.evaluation_utils as eu
+import Thesis_Jupyter_Final.src.models.regular_py_scripts.classical_ml as tm
+import Thesis_Jupyter_Final.src.models.regular_py_scripts.evaluation_utils as eu
 
 senti_labels_both = {1: 'Negative', 2: 'Neutral', 3: 'Positive'}
 senti_labels = list(senti_labels_both.values())
