@@ -2,7 +2,7 @@
 Params: {'max_depth': None, 'min_samples_leaf': 1, 'min_samples_split': 5, 'n_estimators': 200}
 
 Accuracy: 0.75%
-Precision: 0.83
+Precision: 0.84
 Recall: 0.75
 f1-score: 0.79
 

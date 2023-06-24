@@ -9,13 +9,13 @@ f1-score: 0.77
 Classification Report:
               precision    recall  f1-score   support
 
-           1       0.42      0.53      0.47       930
-           2       0.12      0.21      0.15       991
-           3       0.90      0.81      0.85     10000
+    Negative       0.43      0.54      0.48       930
+     Neutral       0.11      0.20      0.14       991
+    Positive       0.90      0.81      0.85     10000
 
     accuracy                           0.74     11921
    macro avg       0.48      0.52      0.49     11921
 weighted avg       0.80      0.74      0.77     11921
 
-AUC score: [0.8799683122946146, 0.6768951672093674, 0.8011706663196252]
-Averaged AUC score: 0.79
+AUC score: [0.88, 0.68, 0.80]
+Weighted average AUC score: 0.80
