@@ -1,0 +1,16 @@
+*Test LSTM
+Optimizer Params: {'name': 'RMSprop', 'learning_rate': 0.1, 'decay': 0.0, 'rho': 0.9, 'momentum': 0.0, 'epsilon': 1e-07, 'centered': False}
+
+Accuracy: 0.84%
+Loss: 0.12
+Classification Report:
+              precision    recall  f1-score   support
+
+    Negative       0.00      0.00      0.00       924
+     Neutral       0.00      0.00      0.00       975
+    Positive       0.84      1.00      0.91     10000
+
+    accuracy                           0.84     11899
+   macro avg       0.28      0.33      0.30     11899
+weighted avg       0.71      0.84      0.77     11899
+

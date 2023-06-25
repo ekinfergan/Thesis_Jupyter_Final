@@ -1,0 +1,16 @@
+*Train LSTM
+Optimizer Params: {'name': 'RMSprop', 'learning_rate': 0.1, 'decay': 0.0, 'rho': 0.9, 'momentum': 0.0, 'epsilon': 1e-07, 'centered': False}
+
+Accuracy: 0.49%
+Loss: 0.22
+Classification Report:
+              precision    recall  f1-score   support
+
+    Negative       0.00      0.00      0.00     10500
+     Neutral       0.00      0.00      0.00     10500
+    Positive       0.49      1.00      0.66     20000
+
+    accuracy                           0.49     41000
+   macro avg       0.16      0.33      0.22     41000
+weighted avg       0.24      0.49      0.32     41000
+
