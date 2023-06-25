@@ -17,3 +17,5 @@ Classification Report:
    macro avg       0.56      0.55      0.55     11921
 weighted avg       0.82      0.83      0.83     11921
 
+AUC score: [0.91, 0.77, 0.88]
+Weighted average AUC score: 0.88
