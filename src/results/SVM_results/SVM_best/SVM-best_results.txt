@@ -1,0 +1,19 @@
+*SVM-best
+Params: {'C': 1, 'gamma': 'scale', 'kernel': 'rbf'}
+
+Accuracy: 0.83%
+Precision: 0.82
+Recall: 0.83
+f1-score: 0.83
+
+Classification Report:
+              precision    recall  f1-score   support
+
+    Negative       0.53      0.49      0.51       930
+     Neutral       0.24      0.23      0.23       991
+    Positive       0.91      0.92      0.92     10000
+
+    accuracy                           0.83     11921
+   macro avg       0.56      0.55      0.55     11921
+weighted avg       0.82      0.83      0.83     11921
+
