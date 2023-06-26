@@ -1,0 +1,16 @@
+*Val GRU
+Optimizer Params: {'name': 'RMSprop', 'learning_rate': 0.01, 'decay': 0.0, 'rho': 0.9, 'momentum': 0.0, 'epsilon': 1e-07, 'centered': False}
+
+Accuracy: 0.84%
+Loss: 0.11
+Classification Report:
+              precision    recall  f1-score   support
+
+    Negative       0.09      0.02      0.04       747
+     Neutral       0.03      0.01      0.01       782
+    Positive       0.87      0.97      0.92     10000
+
+    accuracy                           0.84     11529
+   macro avg       0.33      0.33      0.32     11529
+weighted avg       0.76      0.84      0.80     11529
+

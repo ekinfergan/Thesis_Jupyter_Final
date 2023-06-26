@@ -1,0 +1,16 @@
+*Train GRU
+Optimizer Params: {'name': 'RMSprop', 'learning_rate': 0.01, 'decay': 0.0, 'rho': 0.9, 'momentum': 0.0, 'epsilon': 1e-07, 'centered': False}
+
+Accuracy: 0.50%
+Loss: 0.22
+Classification Report:
+              precision    recall  f1-score   support
+
+    Negative       0.47      0.04      0.07     10500
+     Neutral       0.44      0.01      0.02     10500
+    Positive       0.50      0.99      0.66     20000
+
+    accuracy                           0.50     41000
+   macro avg       0.47      0.35      0.25     41000
+weighted avg       0.48      0.50      0.35     41000
+
