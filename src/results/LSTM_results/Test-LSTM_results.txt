@@ -1,8 +1,8 @@
-*Test LSTM
-Optimizer Params: {'name': 'RMSprop', 'learning_rate': 0.1, 'decay': 0.0, 'rho': 0.9, 'momentum': 0.0, 'epsilon': 1e-07, 'centered': False}
+*Test-LSTM
+Optimizer Params: {'name': 'RMSprop', 'learning_rate': 0.01, 'decay': 0.0, 'rho': 0.9, 'momentum': 0.0, 'epsilon': 1e-07, 'centered': False}
 
 Accuracy: 0.84%
-Loss: 0.12
+Loss: 0.15
 Classification Report:
               precision    recall  f1-score   support
 

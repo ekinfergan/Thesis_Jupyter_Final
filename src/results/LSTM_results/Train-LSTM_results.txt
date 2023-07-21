@@ -1,8 +1,8 @@
-*Train LSTM
-Optimizer Params: {'name': 'RMSprop', 'learning_rate': 0.1, 'decay': 0.0, 'rho': 0.9, 'momentum': 0.0, 'epsilon': 1e-07, 'centered': False}
+*Train-LSTM
+Optimizer Params: {'name': 'RMSprop', 'learning_rate': 0.01, 'decay': 0.0, 'rho': 0.9, 'momentum': 0.0, 'epsilon': 1e-07, 'centered': False}
 
 Accuracy: 0.49%
-Loss: 0.22
+Loss: 0.21
 Classification Report:
               precision    recall  f1-score   support
 

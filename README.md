@@ -20,15 +20,14 @@ Follow this simple guide to get started with setting up the project locally and 
 To run the code you'll need:
 
 - Python 3.10.8 or higher
-- Packages: 
-- Course reviews dataset available at the link: [course reviews]().
+- Course reviews dataset available at the link: [course reviews](https://www.kaggle.com/datasets/septa97/100k-courseras-course-reviews-dataset).
 
 ### Installation
 1. Clone the repository:
 '''bash
 git clone https://github.com/ekinfergan/Thesis_Jupyter_Final.git
 
-2. Install the required packages:
+2. Install the required packages using the following command:
 
 pip install -r dependencies.txt
 
@@ -46,13 +45,13 @@ This project follows a specific pipeline from preprocessing the data to training
 3. **Modeling**
     - In the `models` directory, run `classical_ml.ipynb` to apply Naive Bayes, Random Forest and SVM on the TF-IDF data.
     - Then run `rnns.ipynb` to apply LSTM and GRU on the word embeddings data. 
-    - Lastly, run `bert.ipynb` to apply the BERT model.
+    - Lastly, run `bert.ipynb` to apply the BERT model. <br>
     Note: The models can also be run in Google Collab.
 
 4. **Results**
     - The results from the classical machine learning models and RNNs are saved into the `results` directory. Each model will have its own subdirectory inside the `results` directory where its specific results will be saved.
 
-Please note that you should have the necessary dependencies installed, and you should replace any placeholders in the code with your actual data. If you run into any issues or have any questions, feel free to open an issue or contact the author directly.
+Please note that you should have the necessary dependencies installed, and you should replace any placeholders in the code with your actual data.
 
 
 ## License
