@@ -3,9 +3,6 @@ src/input/processed/normal/glove-twitter-100.txt
 src/input/processed/train_tfidf.csv
 src/input/processed/val_tfidf.csv
 src/input/processed/test_tfidf.csv
-src/input/processed/normal/x_train_scores_padded.npy
-src/input/processed/normal/x_train_scores_padded.txt
-src/input/processed/normal/x_train_scores_padded.pkl
 src/results/RF_results/RF_best/RF-best_model.joblib
 .ipynb_checkpoints
 src/models/__pycache__
