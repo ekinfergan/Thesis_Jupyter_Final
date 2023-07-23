@@ -64,13 +64,14 @@ This project is a part of the Bachelor Thesis at the University of Groningen and
 
 
 ## Acknowledgments
-I would like to express my gratitude towards my supervisor Dr. Tsegaye Misikir Tashu and the University of Groningen for their continual support throughout this project. 
+I would like to express my gratitude towards my supervisor Dr. Tsegaye Misikir Tashu and the University of Groningen for their continual support throughout this thesis project. 
 
 References:
 - [Word Frequency Histogram](https://www.kaggle.com/code/pamin2222/tf-idf-svm-exploration)
 - [Undersampling and Oversampling Strategies](https://machinelearningmastery.com/random-oversampling-and-undersampling-for-imbalanced-classification/)
 - [Machine Learning Mastery - Word Embeddings](https://machinelearningmastery.com/develop-word-embedding-model-predicting-movie-review-sentiment/)
 - [Sentiment Analysis with TF-IDF and Random Forest](https://www.kaggle.com/code/onadegibert/sentiment-analysis-with-tfidf-and-random-forest/notebook)
+- [AUC ROC](https://www.geeksforgeeks.org/multiclass-receiver-operating-characteristic-roc-in-scikit-learn/)
 - [Gradient Boost Model](https://medium.com/@crawftv/parameter-hyperparameter-tuning-with-bayesian-optimization-7acf42d348e1)
 - [Word2Vec - LSTM](https://www.kaggle.com/code/caiyutiansg/twitter-sentiment-analysis-with-word2vec-lstm)
 - [Fine-tuning BERT](https://colab.research.google.com/github/NielsRogge/Transformers-Tutorials/blob/master/BERT/Fine_tuning_BERT_(and_friends)_for_multi_label_text_classification.ipynb#scrollTo=mjJGEXShp7te )
